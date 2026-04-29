@@ -274,21 +274,56 @@ section{padding:120px 60px}
 
 /* ── SKILLS SECTION ───────────────────────────────────────────────── */
 #skills{background:var(--bg2)}
+#skills .section-tag,
+#journey .section-tag,
+#lab .section-tag,
+#contact .section-tag{
+  letter-spacing:.32em;
+}
+#skills .section-title,
+#journey .section-title,
+#lab .section-title,
+#contact .contact-title{
+  font-size:clamp(2.8rem,5.8vw,5.2rem);
+  line-height:.98;
+  letter-spacing:-.04em;
+}
+#skills .section-title em,
+#journey .section-title em,
+#lab .section-title em,
+#contact .contact-title .highlight{
+  background:linear-gradient(90deg,var(--teal),#5fa8ff 42%,#a855ff 66%,#ff2d78);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
 .skills-grid{
-  display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
   gap:12px;
 }
 .skill-pill{
   position:relative;overflow:hidden;
-  padding:16px 12px;border-radius:8px;
+  min-height:70px;padding:16px 18px;border-radius:8px;
   border:1px solid rgba(0,245,212,.1);
-  background:rgba(0,245,212,.03);
-  text-align:center;
+  background:rgba(6,12,24,.72);
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  text-align:left;
   font-family:var(--font-mono);font-size:.8rem;
   color:var(--text);font-weight:600;letter-spacing:.05em;
   transition:border-color .3s,background .3s,transform .3s;
   cursor:none;
 }
+.skill-icon{
+  width:24px;height:24px;flex:0 0 auto;
+  color:var(--teal);
+}
+.skill-icon svg{width:100%;height:100%;display:block}
+.skill-icon.python{color:#3776ab}.skill-icon.js{color:#f7df1e}.skill-icon.java{color:#f89820}
+.skill-icon.c{color:#659ad2}.skill-icon.racket{color:#9f1d20}.skill-icon.web{color:#e44d26}
+.skill-icon.algo{color:#00f5d4}.skill-icon.data{color:#7c5cff}.skill-icon.ml{color:#ff2d78}
+.skill-icon.flex{color:#ffd60a}.skill-icon.git{color:#f05032}.skill-icon.deploy{color:#00d084}
+.skill-icon.docker{color:#2496ed}.skill-icon.kube{color:#326ce5}.skill-icon.cloud{color:#60a5fa}
+.skill-icon.version{color:#b44dff}.skill-icon.cicd{color:#ff2d78}.skill-icon.linux{color:#facc15}
 .skill-pill::before{
   content:'';position:absolute;inset:0;
   background:linear-gradient(135deg,rgba(0,245,212,.08),rgba(247,0,255,.05));
@@ -302,14 +337,20 @@ section{padding:120px 60px}
 .skill-pill:hover::before{opacity:1}
 
 /* ── JOURNEY / TIMELINE ───────────────────────────────────────────── */
+#journey{
+  background:
+    radial-gradient(circle at 15% 10%,rgba(247,0,255,.12),transparent 32%),
+    radial-gradient(circle at 80% 20%,rgba(0,245,212,.09),transparent 32%);
+}
 .journey-grid{
-  display:grid;grid-template-columns:1fr 1fr;gap:20px;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:16px;
 }
 .journey-card{
   position:relative;overflow:hidden;
-  padding:32px;border-radius:12px;
-  border:1px solid var(--glass-border);
-  background:var(--glass);
+  min-height:300px;
+  padding:30px;border-radius:12px;
+  border:1px solid rgba(180,77,255,.28);
+  background:rgba(180,77,255,.045);
   backdrop-filter:blur(12px);
   cursor:none;
   transition:border-color .3s,transform .3s,box-shadow .3s;
@@ -335,8 +376,8 @@ section{padding:120px 60px}
   letter-spacing:.05em;
 }
 .journey-card p{
-  color:var(--muted);line-height:1.8;font-size:.95rem;
-  font-weight:300;
+  color:var(--muted);line-height:1.8;font-size:1rem;
+  font-weight:500;
 }
 .journey-card .card-answer{
   display:none;color:var(--text);line-height:1.8;font-size:.9rem;
@@ -428,14 +469,20 @@ section{padding:120px 60px}
 .slider-dot.active{background:var(--teal);box-shadow:0 0 8px var(--teal)}
 
 /* ── COMING SOON LAB ──────────────────────────────────────────────── */
+#lab{
+  background:
+    radial-gradient(circle at 12% 15%,rgba(247,0,255,.11),transparent 30%),
+    radial-gradient(circle at 88% 20%,rgba(0,245,212,.09),transparent 34%);
+}
 .lab-grid{
-  display:grid;grid-template-columns:repeat(2,1fr);gap:16px;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:14px;
 }
 .lab-card{
   position:relative;overflow:hidden;
-  padding:28px;border-radius:10px;
-  border:1px solid rgba(247,0,255,.12);
-  background:rgba(247,0,255,.03);
+  min-height:300px;
+  padding:34px 28px;border-radius:10px;
+  border:1px solid rgba(247,45,120,.24);
+  background:rgba(247,45,120,.04);
   transition:border-color .3s,transform .3s;cursor:none;
 }
 .lab-card:hover{border-color:rgba(247,0,255,.4);transform:translateY(-4px)}
@@ -446,10 +493,10 @@ section{padding:120px 60px}
   stroke:currentColor;
 }
 .lab-card h4{
-  font-family:var(--font-display);font-size:.9rem;font-weight:700;
+  font-family:var(--font-display);font-size:1rem;font-weight:700;
   color:var(--magenta);margin-bottom:8px;letter-spacing:.06em;
 }
-.lab-card p{color:var(--muted);font-size:.85rem;line-height:1.6;font-weight:300}
+.lab-card p{color:var(--muted);font-size:.98rem;line-height:1.75;font-weight:500}
 .lab-status{
   margin-top:12px;font-family:var(--font-mono);font-size:.65rem;
   color:var(--gold);letter-spacing:.15em;text-transform:uppercase;
@@ -465,7 +512,6 @@ section{padding:120px 60px}
 }
 .contact-title{
   font-family:var(--font-display);
-  font-size:clamp(2.5rem,5vw,4.5rem);
   font-weight:900;line-height:1;letter-spacing:-.04em;
   margin-bottom:24px;
 }
@@ -512,6 +558,14 @@ footer{
   .lab-grid{grid-template-columns:1fr}
   .project-inner{padding:28px;min-height:auto}
   .nav-links{display:none}
+  #skills .section-title,
+  #journey .section-title,
+  #lab .section-title,
+  #contact .contact-title{font-size:clamp(2.1rem,11vw,3.2rem)}
+  .skills-grid{grid-template-columns:1fr}
+  .skill-pill{justify-content:flex-start}
+  .journey-card,.lab-card{min-height:auto}
+  .contact-title br{display:none}
 }
 </style>
 </head>
@@ -595,20 +649,24 @@ footer{
     <div class="section-tag reveal">Technical Stack</div>
     <h2 class="section-title reveal delay-1">Tools I <em>build with.</em></h2>
     <div class="skills-grid">
-      <div class="skill-pill reveal delay-1">Python</div>
-      <div class="skill-pill reveal delay-1">JavaScript</div>
-      <div class="skill-pill reveal delay-2">Java</div>
-      <div class="skill-pill reveal delay-2">C</div>
-      <div class="skill-pill reveal delay-2">Racket</div>
-      <div class="skill-pill reveal delay-3">HTML/CSS</div>
-      <div class="skill-pill reveal delay-3">Flex/Bison</div>
-      <div class="skill-pill reveal delay-3">Git</div>
-      <div class="skill-pill reveal delay-4">Algorithms</div>
-      <div class="skill-pill reveal delay-4">Data Structures</div>
-      <div class="skill-pill reveal delay-4">Testing</div>
-      <div class="skill-pill reveal delay-5">Deployment</div>
-      <div class="skill-pill reveal delay-5">Machine Learning</div>
-      <div class="skill-pill reveal delay-5">Problem Solving</div>
+      <div class="skill-pill reveal delay-1"><span class="skill-icon python"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 12h8a4 4 0 0 0 4-4V7a4 4 0 0 0-4-4h-4a4 4 0 0 0-4 4v10a4 4 0 0 1-4 4" stroke="currentColor" stroke-width="1.8"/><path d="M16 12H8a4 4 0 0 0-4 4v1a4 4 0 0 0 4 4h4a4 4 0 0 0 4-4V7a4 4 0 0 1 4-4" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="6" r="1.2" fill="currentColor"/></svg></span>Python</div>
+      <div class="skill-pill reveal delay-1"><span class="skill-icon js"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M9 9v6c0 1.4-.8 2-2 2M14 17c2 0 3-1 3-2.3 0-2.5-4-1.6-4-3.7 0-1.1 1-2 3-2" stroke="currentColor" stroke-width="1.8"/></svg></span>JavaScript</div>
+      <div class="skill-pill reveal delay-2"><span class="skill-icon java"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 18c-3 0-5 .7-5 1.6S6.7 21 12 21s8-1 8-2.1c0-.8-1.4-1.3-3.5-1.6M9 15h7M10 6c-1.5 1.1 1.5 2.1 0 3.5M14 3c-2 1.4 2 2.6 0 4.5M8 11h8l-1 5H9z" stroke="currentColor" stroke-width="1.8"/></svg></span>Java</div>
+      <div class="skill-pill reveal delay-2"><span class="skill-icon c"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 8V6l-7-4-7 4v12l7 4 7-4v-2M15.5 9.5A4 4 0 1 0 15.5 14.5" stroke="currentColor" stroke-width="1.8"/></svg></span>C</div>
+      <div class="skill-pill reveal delay-2"><span class="skill-icon racket"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 19 12 5l5 14M9 14h6M5 19h14" stroke="currentColor" stroke-width="1.8"/></svg></span>Racket</div>
+      <div class="skill-pill reveal delay-3"><span class="skill-icon web"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m8 8-4 4 4 4m8-8 4 4-4 4m-2-11-4 14" stroke="currentColor" stroke-width="1.8"/></svg></span>HTML/CSS</div>
+      <div class="skill-pill reveal delay-3"><span class="skill-icon algo"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="2" stroke="currentColor" stroke-width="1.8"/><circle cx="18" cy="7" r="2" stroke="currentColor" stroke-width="1.8"/><circle cx="8" cy="18" r="2" stroke="currentColor" stroke-width="1.8"/><circle cx="17" cy="17" r="2" stroke="currentColor" stroke-width="1.8"/><path d="M8 7.2 16 6.8M7 8l1 8M17.3 8.7 16.5 15M9.7 17.7l5.6-.5" stroke="currentColor" stroke-width="1.8"/></svg></span>Algorithms</div>
+      <div class="skill-pill reveal delay-3"><span class="skill-icon data"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 7h14v4H5zM5 13h14v4H5zM8 5h8M8 19h8" stroke="currentColor" stroke-width="1.8"/></svg></span>Data Structures</div>
+      <div class="skill-pill reveal delay-4"><span class="skill-icon ml"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="6" cy="8" r="2" stroke="currentColor" stroke-width="1.8"/><circle cx="6" cy="16" r="2" stroke="currentColor" stroke-width="1.8"/><circle cx="18" cy="12" r="2" stroke="currentColor" stroke-width="1.8"/><path d="M8 8h4l4 4-4 4H8" stroke="currentColor" stroke-width="1.8"/></svg></span>Machine Learning</div>
+      <div class="skill-pill reveal delay-4"><span class="skill-icon flex"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 6 3 12l4 6m10-12 4 6-4 6M10 8h4M10 12h4M10 16h4" stroke="currentColor" stroke-width="1.8"/></svg></span>Flex/Bison</div>
+      <div class="skill-pill reveal delay-4"><span class="skill-icon git"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="2" stroke="currentColor" stroke-width="1.8"/><circle cx="18" cy="18" r="2" stroke="currentColor" stroke-width="1.8"/><circle cx="6" cy="18" r="2" stroke="currentColor" stroke-width="1.8"/><path d="M8 7.5 16.5 16M6 8v8" stroke="currentColor" stroke-width="1.8"/></svg></span>Git</div>
+      <div class="skill-pill reveal delay-4"><span class="skill-icon version"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 7h10M7 12h10M7 17h6" stroke="currentColor" stroke-width="1.8"/><path d="M5 4h14v16H5z" stroke="currentColor" stroke-width="1.8"/></svg></span>Version Control</div>
+      <div class="skill-pill reveal delay-5"><span class="skill-icon docker"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 13h15c1.8 0 2.9-.8 3.7-2.2.2 2.8-1.4 6.2-6.7 6.2H8c-2.7 0-4.5-1.3-5-4Z" stroke="currentColor" stroke-width="1.8"/><path d="M6 10h3v3H6zm4 0h3v3h-3zm4 0h3v3h-3zM10 6h3v3h-3zm4 0h3v3h-3z" stroke="currentColor" stroke-width="1.8"/></svg></span>Docker</div>
+      <div class="skill-pill reveal delay-5"><span class="skill-icon kube"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9z" stroke="currentColor" stroke-width="1.8"/><path d="M12 8v8m-4-4h8m-6.8-2.8 5.6 5.6m0-5.6-5.6 5.6" stroke="currentColor" stroke-width="1.8"/></svg></span>Kubernetes</div>
+      <div class="skill-pill reveal delay-5"><span class="skill-icon cloud"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 18h10a4 4 0 0 0 .8-7.9A6 6 0 0 0 6.3 9 4.5 4.5 0 0 0 7 18Z" stroke="currentColor" stroke-width="1.8"/></svg></span>Cloud Computing</div>
+      <div class="skill-pill reveal delay-5"><span class="skill-icon cicd"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12a7 7 0 0 1 11.9-5M19 12a7 7 0 0 1-11.9 5" stroke="currentColor" stroke-width="1.8"/><path d="M17 3v4h-4M7 21v-4h4" stroke="currentColor" stroke-width="1.8"/></svg></span>CI/CD</div>
+      <div class="skill-pill reveal delay-5"><span class="skill-icon linux"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 19c1.4 1.2 6.6 1.2 8 0M9 8c0-3 1-5 3-5s3 2 3 5c0 2 2 4 2 7 0 2-2 4-5 4s-5-2-5-4c0-3 2-5 2-7Z" stroke="currentColor" stroke-width="1.8"/><path d="M10 9h.01M14 9h.01" stroke="currentColor" stroke-width="2.4"/></svg></span>Linux</div>
+      <div class="skill-pill reveal delay-5"><span class="skill-icon deploy"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 18h10a4 4 0 0 0 .8-7.9A6 6 0 0 0 6.3 9 4.5 4.5 0 0 0 7 18Z" stroke="currentColor" stroke-width="1.8"/><path d="M12 15V7m-3 3 3-3 3 3" stroke="currentColor" stroke-width="1.8"/></svg></span>Deployment</div>
     </div>
   </div>
 </section>
@@ -617,35 +675,27 @@ footer{
 <section id="journey">
   <div class="container">
     <div class="section-tag reveal">Career Journey</div>
-    <h2 class="section-title reveal delay-1">From curiosity to <em>working software.</em></h2>
+    <h2 class="section-title reveal delay-1">Curiosity becoming <em>working software.</em></h2>
     <div class="journey-grid">
-      <div class="journey-card reveal delay-1" onclick="toggleCard(this)">
+      <div class="journey-card reveal delay-1">
         <div class="journey-num">01</div>
-        <h3>About My Path</h3>
-        <p>I am a software engineering student in London, building the kind of projects that make abstract concepts feel real.</p>
-        <div class="card-answer">My strongest work is around Python, algorithms, full-stack JavaScript, machine learning coursework, and clear problem solving. I like projects where I can see the logic, test the behaviour, and make the experience easier for people.</div>
-        <div class="card-hint">Click to expand</div>
+        <h3>How I Think</h3>
+        <p>I like taking a vague idea and turning it into structure: data models, algorithms, interfaces, tests, and readable code.</p>
       </div>
-      <div class="journey-card reveal delay-2" onclick="toggleCard(this)">
+      <div class="journey-card reveal delay-2">
         <div class="journey-num">02</div>
-        <h3>Why I Chose IT</h3>
-        <p>Software gives me a place to be both precise and creative.</p>
-        <div class="card-answer">I enjoy taking a messy idea and turning it into something structured: data models, routes, tests, interfaces, and small decisions that add up to a working system.</div>
-        <div class="card-hint">Click to expand</div>
+        <h3>Why IT</h3>
+        <p>Software gives me the mix I enjoy most: logic, creativity, patience, and the satisfaction of making something work.</p>
       </div>
-      <div class="journey-card reveal delay-3" onclick="toggleCard(this)">
+      <div class="journey-card reveal delay-3">
         <div class="journey-num">03</div>
-        <h3>Future Goals</h3>
-        <p>Grow into a dependable full-stack engineer who can contribute quickly and keep learning.</p>
-        <div class="card-answer">I want to keep strengthening backend design, databases, testing, deployment, and frontend craft, while working with teams that care about quality and clear communication.</div>
-        <div class="card-hint">Click to expand</div>
+        <h3>Learning Now</h3>
+        <p>I am sharpening Java, Python, deployment, algorithms, and the habit of making repositories easy to understand.</p>
       </div>
-      <div class="journey-card reveal delay-4" id="learning" onclick="toggleCard(this)">
+      <div class="journey-card reveal delay-4" id="learning">
         <div class="journey-num">04</div>
-        <h3>Learning Right Now</h3>
-        <p>Sharpening the habits that make code easier to trust.</p>
-        <div class="card-answer">Right now I am deepening Java, data structures, JavaScript deployment, Python problem solving, and the discipline of writing projects that other people can understand from the repository alone.</div>
-        <div class="card-hint">Click to expand</div>
+        <h3>Next Step</h3>
+        <p>I am looking for internship work where I can contribute, learn quickly, and grow around serious engineering standards.</p>
       </div>
     </div>
   </div>
@@ -780,25 +830,25 @@ footer{
         <svg class="lab-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <h4>Java RoadMap</h4>
         <p>A structured Java learning repository moving from fundamentals into object-oriented programming and stronger real-world habits.</p>
-        <div class="project-links"><a href="https://github.com/jhemon26/Java_RoadMap" target="_blank" class="btn-outline" style="font-size:.72rem;padding:9px 18px">View Code</a></div>
+        <div class="project-links"><a href="https://github.com/jhemon26/Java_RoadMap" target="_blank" class="btn-outline" style="font-size:.72rem;padding:9px 18px">Code</a></div>
       </div>
       <div class="lab-card reveal delay-2">
         <svg class="lab-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M7 7V5h10v2M6 7l1 13h10l1-13M10 11v5M14 11v5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <h4>DSA Coursework</h4>
         <p>Python coursework focused on algorithms, data structures, and the practical discipline of solving problems step by step.</p>
-        <div class="project-links"><a href="https://github.com/jhemon26/COMP1819-DSA-Coursework" target="_blank" class="btn-outline" style="font-size:.72rem;padding:9px 18px">View Code</a></div>
+        <div class="project-links"><a href="https://github.com/jhemon26/COMP1819-DSA-Coursework" target="_blank" class="btn-outline" style="font-size:.72rem;padding:9px 18px">Code</a></div>
       </div>
       <div class="lab-card reveal delay-3">
         <svg class="lab-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 3h12v18H6zM9 7h6M9 11h6M9 15h3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <h4>Scheme Family Tree</h4>
         <p>A functional-programming version of the family tree work, using recursion and relationship logic in a different paradigm.</p>
-        <div class="project-links"><a href="https://github.com/jhemon26/COMP1811_Scheme_Family-Tree-Project" target="_blank" class="btn-outline" style="font-size:.72rem;padding:9px 18px">View Code</a></div>
+        <div class="project-links"><a href="https://github.com/jhemon26/COMP1811_Scheme_Family-Tree-Project" target="_blank" class="btn-outline" style="font-size:.72rem;padding:9px 18px">Code</a></div>
       </div>
       <div class="lab-card reveal delay-4">
         <svg class="lab-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v18M5 8h14M7 16h10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <h4>Python Practice</h4>
         <p>Ongoing Python practice repositories that show consistency, repetition, and steady improvement beyond a single coursework brief.</p>
-        <div class="project-links"><a href="https://github.com/jhemon26/Master-Python-in-60-Days" target="_blank" class="btn-outline" style="font-size:.72rem;padding:9px 18px">View Code</a></div>
+        <div class="project-links"><a href="https://github.com/jhemon26/Master-Python-in-60-Days" target="_blank" class="btn-outline" style="font-size:.72rem;padding:9px 18px">Code</a></div>
       </div>
     </div>
   </div>
@@ -808,12 +858,12 @@ footer{
 <section id="contact">
   <div class="container">
     <div class="contact-glow"></div>
-    <div class="section-tag reveal" style="justify-content:center">Let's Connect</div>
+    <div class="section-tag reveal" style="justify-content:center">Contact</div>
     <h2 class="contact-title reveal delay-1">
-      Let's build<br><span class="highlight">something real.</span>
+      Let us build <span class="highlight">something real.</span>
     </h2>
     <p class="contact-sub reveal delay-2">
-      I'm actively looking for internship opportunities where I can contribute, learn from experienced engineers, and grow through real product work.
+      I am open to internship conversations, portfolio feedback, and practical software projects where I can learn by contributing.
     </p>
     <div class="contact-links reveal delay-3">
       <a href="mailto:je2264r@gre.ac.uk" class="btn-primary">Email Me</a>
