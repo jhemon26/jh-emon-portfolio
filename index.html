@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=1180">
 <title>JH Emon — Software Engineer</title>
 <meta name="description" content="Portfolio for JH Emon, a London-based software engineer focused on full-stack systems, Python tooling, algorithms, AI and deployment-ready applications.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,7 +30,7 @@
   --code:'Space Mono',monospace;
 }
 
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;min-width:1180px}
 body{
   background:
     radial-gradient(circle at 9% 8%,rgba(194,214,232,.11),transparent 31rem),
@@ -483,8 +483,22 @@ footer{border-top:1px solid var(--rule);padding:1.9rem 6vw 2.15rem;display:flex;
 <footer><span class="ft">JH Emon · Software Engineering Portfolio</span><span class="ft ft-note">That covers the essentials. I would be happy to share more about my work in a conversation. :)</span></footer>
 
 <script>
+if('scrollRestoration' in history) history.scrollRestoration='manual';
+let internalAnchorNavigation=false;
+const startAtTop=()=>{
+  if(internalAnchorNavigation) return;
+  if(location.hash) history.replaceState(null,'',location.pathname+location.search);
+  window.scrollTo(0,0);
+};
+window.addEventListener('pageshow',()=>requestAnimationFrame(startAtTop));
+window.addEventListener('load',()=>requestAnimationFrame(startAtTop));
+
 const nav=document.getElementById('nav');
 window.addEventListener('scroll',()=>nav.classList.toggle('s',window.scrollY>50),{passive:true});
+
+document.querySelectorAll('a[href^="#"]').forEach(link=>{
+  link.addEventListener('click',()=>{internalAnchorNavigation=true;setTimeout(()=>{internalAnchorNavigation=false},1200)});
+});
 
 document.querySelectorAll('[data-mail-link]').forEach(link=>{
   link.addEventListener('click',event=>{
